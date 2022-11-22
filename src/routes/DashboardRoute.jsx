@@ -12,12 +12,12 @@ export default function DashboardRoute() {
   return (
     <Routes>
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/users" element={<ProtectedRoute role="admin" component={ListUsers} />} />
+      <Route path="/users" element={<ProtectedRoute role="sdadmin" component={ListUsers} />} />
     </Routes>
   );
 }
 
-function ProtectedRoute({ component: Component, role = "admin", ...restOfProps }) {
+function ProtectedRoute({ component: Component, role = "admin" }) {
   let navigate = useNavigate();
   let [user, setUser] = useRecoilState(userAtom);
   const [cookies, removeCookie] = useCookies(["token"]);
